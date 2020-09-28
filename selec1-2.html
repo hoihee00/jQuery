@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selec1-2.html</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            $(".title").css({
+                "border": "2px solid #A4A4A4",
+                "background": "#F5A9D0",
+                "color": "white"
+            })
+
+            $(".txt1").closest("div")
+                .css({
+                    "border": "2px solid #BCF5A9",
+                    "background": "#F5FBEF"
+                });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class='title'>선택자</h1>
+    <div>
+        <div>
+            <p class="txt1">내용</p>
+        </div>
+    </div>
+</body>
+
+</html>

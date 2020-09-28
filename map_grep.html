@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map_grep.html</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            var arr1 = [{
+                "area": "대구",
+                "name": "Kim"
+            }, {
+                "area": "뉴욕",
+                "name": "Charlie"
+                
+            }, {
+                "area": "파리",
+                "name": "Martin"
+            }, {
+                "area": "대구",
+                "name": "Jeong"
+            }]
+
+            var arr2 = $.map(arr1, function(a,b) {
+                if(a.area == "대구") {
+                    return a;
+                }
+            });
+            console.log(arr2);
+            console.log("===== First End =====");
+
+            var arr3 = $.grep(arr1, function(a,b) {
+                if (a.area == "대구") {
+                    return true;
+                } else {
+                    return false;
+                }
+            });
+            console.log(arr3);
+            console.log("===== Second End =====");
+        });
+    </script>
+</head>
+
+<body>
+    <h1>map / grep 메서드</h1>
+    <ul id="menu1">
+        <li>내용 1-1</li>
+        <li>내용 1-2</li>
+        <li>내용 1-3</li>
+    </ul>
+    <ul id="menu2">
+        <li>내용 2-1</li>
+        <li>내용 2-2</li>
+        <li>내용 2-3</li>
+    </ul>
+</body>
+
+</html>

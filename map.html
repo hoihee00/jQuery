@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map.html</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+            // map() : 배열에 저장된 데이터 수만큼 메서드가 반복 실행
+            // 함수에서 반환된 데이터는 새 배열에 순서대로 저장, 새로 저장된 배열 객체를 반환함
+            let ids = $('input[type="checkbox"]').map((a, b) => { // 가지고 온 요소들을 매핑
+                console.log(a, b); // a: index, b: elements(요소)
+                return b.id;
+            }).get().join('-'); // join 후 배열에서 문자열로 타입 변경됨
+            console.clear();
+            console.log(ids);
+
+            // $.map($('input[type="checkbox"]'), (a,b) => {
+            // })
+
+            // grep() : 배열에 저장된 데이터 수만큼 메서드가 반복 실행
+            // 반환값이 true인 경우에만 배열의 데이터가 인덱스 오름차순으로 새 배열에 저장되며 그 배열을 반환함
+            let chkboxes = $.grep($('input:checkbox'), (a, b) => {
+                console.log(a, b); // 앞 object, 뒤 index
+                return (b > 0 ? a : null); // index 값(b)이 0보다 크면 a 출력, 아니면 null 출력
+            })
+            console.log(chkboxes);
+        })
+    </script>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for="one">One</label>
+            <input type="checkbox" id="one">
+        </div>
+        <div>
+            <label for="two">Two</label>
+            <input type="checkbox" id="two">
+        </div>
+        <div>
+            <label for="three">Three</label>
+            <input type="checkbox" id="three">
+        </div>
+    </form>
+</body>
+
+</html>

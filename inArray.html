@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>inArray.html</title>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script>
+        $(function() {
+            var arr1 = ["서울", "대구", "대전", "부산"];
+            var arr2 = ["한국", "미국", "중국", "영국"];
+            var obj = {
+                "name": "Kim",
+                "area": "서울"
+            }
+
+            var idxNum = $.inArray("부산", arr1);
+            console.log(idxNum);
+
+            var okArray1 = $.isArray(arr1);
+            var okArray2 = $.isArray(obj);
+            console.log(okArray1); // 배열 객체면 true
+            console.log(okArray2); // 배열 객체가 아니면 false
+
+            $.merge(arr2, arr1);
+            console.log(arr2);
+        });
+    </script>
+</head>
+
+<body>
+    <h1>inArray / isArray / merge 메서드</h1>
+    <ul id="menu1">
+        <li>내용 1-1</li>
+        <li>내용 1-2</li>
+        <li>내용 1-3</li>
+    </ul>
+    <ul id="menu2">
+        <li>내용 2-1</li>
+        <li>내용 2-2</li>
+        <li>내용 2-3</li>
+    </ul>
+</body>
+
+</html>
