@@ -7,27 +7,42 @@
     <title>selector_etc2.html</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+
+        //  $ 표시 대신 jq로 표시하겠다는 의미
+        // let jq = $.noConflict();
+
         $(function () {
 
             // id 값이 "inner_1"인 요소의 하위 요소 중 class 값이 ".txt1"인 요소를 선택
             $("#inner_1").find(".txt1")
                 .css({
-                    "background-color": "#ff0"
+                    "background-color": "mistyrose "
                 });
 
             // id 값이 "inner_1"인 요소의 하위 요소 중 class 값이 ".txt2"인 요소를 선택
             $("#inner_1 p").filter(".txt2")
                 .css({
-                    "background-color": "#0ff"
+                    "background-color": "lightcyan"
                 });
 
             // id 값이 "inner_2"인 요소의 하위 요소인 <p>의 개수만큼 익명 함수 실행
+            // $("#inner_2 p").filter(function (a, b) {
+            //     console.log(a, b);
+            // });
             $("#inner_2 p").filter(function (idx, obj) {
                     console.log(idx);
                     return idx % 2 == 0;
                 })
                 .css({
-                    "background-color": "#0f0"
+                    "background-color": "lemonchiffon"
+                });
+
+            $("#inner_2 p").filter(function (idx, obj) {
+                    // console.log(idx);
+                    return $(obj).html() == 'index 1' || $(obj).html() == 'index 3';
+                })
+                .css({
+                    "background-color": "honeydew"
                 });
 
         });
@@ -36,7 +51,7 @@
 
 <body>
     <div id="outer_wrap">
-        <h1>콘텐츠 탐색 선택자</h1>
+        <h1 style="color: teal;">콘텐츠 탐색 선택자</h1>
         <section id="inner_1">
             <h2>find(), filter()</h2>
             <p class="txt1">내용1</p>
