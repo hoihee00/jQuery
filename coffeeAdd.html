@@ -13,28 +13,65 @@
             for (let i = 0; i < 12; i++) {
                 data.pop();
             }
-            
+
+            $('#coffeeInput').on('click', function (event) {
+                event.preventDefault();
+                // DB 연결할 경우
+                // $.ajax({
+                //     url: 'db에 값을 한 건 입력하는 페이지',
+                //     success: function (a, b) {
+                //         // 추가된 데이터에 대한 정보를 화면에 출력
+                //     },
+                //     error: function (a, b) {
+                //         // 에러에 대한 내용을 사용자에게 통보
+                //     }
+                // })
+                // // 위 방법(DB 연결) 대신 배열에 입력
+
+                let item_no = $('#frm input[name="item_no"]').val();
+                let item = $('#frm input[name="item"]').val();
+                let content = $('#frm input[name="content"]').val();
+                let price = $('#frm input[name="price"]').val();
+                let image = $('#frm input[name="image"]').val();
+                let star = $('#frm input[name="star"]').val();
+                let category = $('#frm input[name="category"]').val();
+                let obj = {
+                    item_no: item_no,
+                    item: item,
+                    content: content,
+                    price: price,
+                    image: image,
+                    star: star,
+                    category: category
+                };
+
+                data.push(obj);
+                console.log(data);
+
+                // 화면에 반영 - item_no, item, category, price, star
+                let tr = $('<tr />');
+                tr.append($('<td />').html(item_no),
+                    $('<td />').html(item),
+                    $('<td />').html(category),
+                    $('<td />').html(price),
+                    $('<td />').html(star)
+                );
+                
+                // tr 라인을 만들어서 테이블에 추가
+                $('#tbl2').append(tr);
+
+            });
+
             // 입력한 데이터를 화면에 출력
             showData();
-            
-            $('#coffeeInput').on('click', function (event) {
-                // DB 연결할 경우
-                $.ajax({
-                    url: 'db에 값을 한 건 입력하는 페이지',
-                    success: function (a, b) {
-                        // 추가된 데이터에 대한 정보를 화면에 출력
-                    },
-                    error: function (a, b) {
-                        // 에러에 대한 내용을 사용자에게 통보
-                    }
-                })
-                // 위 방법(DB 연결) 대신 배열에 입력
-                
-            });
+
         });
-        
+
         function showData() {
-            let table = $('<table />').attr('border', '1');
+            let table = $('<table />').attr({
+                'border': '1',
+                'id': 'tbl2'
+            });
             let fields = ['item_no', 'item', 'category', 'price', 'star'];
             $(data).each(function (idx, obj) {
                 let tr = $('<tr />');
